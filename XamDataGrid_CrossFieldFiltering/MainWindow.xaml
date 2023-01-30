@@ -1,0 +1,34 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XamDataGrid_CrossFieldFiltering"
+        xmlns:igWPF="http://schemas.infragistics.com/xaml/wpf" x:Class="XamDataGrid_CrossFieldFiltering.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <igWPF:XamDataGrid  x:Name="xamDataGrid1" DataSource="{Binding}">
+            <igWPF:XamDataGrid.FieldLayoutSettings>
+                <igWPF:FieldLayoutSettings HeaderPrefixAreaDisplayMode="Menu" HeaderPrefixAreaMenuOptions="ShowCrossFieldRecordFiltersDialog,ClearCrossFieldRecordFilters" />
+            </igWPF:XamDataGrid.FieldLayoutSettings>
+            <igWPF:XamDataGrid.FieldLayouts>
+                <igWPF:FieldLayout>
+                    <igWPF:FieldLayout.FieldSettings>
+                        <igWPF:FieldSettings AllowCrossFieldRecordFiltering="True" AllowRecordFiltering="True" />
+                    </igWPF:FieldLayout.FieldSettings>
+                    <igWPF:FieldLayout.Fields>
+                        <igWPF:Field Name="Id" />
+                        <igWPF:Field Name="Test1" />
+                        <igWPF:Field Name="Test2"/>
+                    </igWPF:FieldLayout.Fields>
+                </igWPF:FieldLayout>
+            </igWPF:XamDataGrid.FieldLayouts>
+        </igWPF:XamDataGrid>
+        <Button Grid.Row="1" Content="([Id]が='0' OR [Test1])が='1') AND [Test2]が='Item0'" Click="Button_Click"/>
+    </Grid>
+</Window>
